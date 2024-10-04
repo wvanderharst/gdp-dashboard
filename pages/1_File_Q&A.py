@@ -2,7 +2,7 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
-
+import ast
 
 st.title("Meest voorkomende combinates")
 
