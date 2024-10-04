@@ -1,12 +1,13 @@
-import streamlit as st
+import altair as alt
 import pandas as pd
-import math
-from pathlib import Path
+import streamlit as st
+import matplotlib.pyplot as plt
 
 
 
 
-
+# Show the page title and description.
+st.set_page_config(page_title="Peilingen")
 st.title("Peilingen")
 st.write(
     """
@@ -51,3 +52,16 @@ st.bar_chart(df_filtered2,x="Partij",y="3")
 
 st.write(df_filtered2["Partij"].tolist())
 
+for i in range(len(df_filtered2["3"])):
+    labels = 'Coaltitie', 'Oppositie'
+    sizes = [df_filtered2["3"][i], 100 - df_filtered2["3"][i] ]
+    explode = (0, 0.1)  # only "explode" the 2nd slice (i.e. 'Hogs')
+
+    fig1, ax1 = plt.subplots()
+
+
+    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    plt.title(df_filtered2["Partij"][i])
+    st.pyplot(fig1)
