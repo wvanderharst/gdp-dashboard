@@ -1,9 +1,8 @@
-import altair as alt
+
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
-import ast
-import itertools
+
 
 st.title("Meest voorkomende combinates")
 
